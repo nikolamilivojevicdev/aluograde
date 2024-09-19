@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Product Details</title>
+    <style>
+        /* Stilovi koji se primenjuju samo na popup stranicu */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: white; /* Pozadina za popup */
+            overflow: hidden; /* Sprečava scroll pozadinske stranice */
+        }
+
+        /* Kontejner za centralizaciju sadržaja sa fiksnom visinom */
+        .popup-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 70vh; /* Smanjena visina prozora */
+            max-height: 90vh; /* Ograničenje maksimalne visine */
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        /* Dodatno stilizovanje za bolji izgled na manjim ekranima */
+        @media (max-width: 768px) {
+            p {
+                padding: 0 5%;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="popup-content">
+        <h1 th:text="${ograde.name}">Naziv proizvoda</h1>
+        <img th:src="@{'/images/' + ${ograde.imageFileName}}" alt="Product Image">
+        <p th:text="${ograde.description}">Opis proizvoda</p>
+    </div>
+</body>
+</html>
